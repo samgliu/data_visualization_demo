@@ -1,6 +1,7 @@
 import { Box, Tab, Tabs, Typography } from '@mui/material/';
 
-import SmileyFace from './SmileyFace';
+import SmileyFace from './components/SmileyFace/SmileyFace';
+import { range } from 'd3';
 import { useState } from 'react';
 
 interface TabPanelProps {
@@ -41,6 +42,8 @@ const MyTabs = () => {
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
+  // array for smiley faces
+  const faceArray = range(6 * 3);
 
   return (
     <Box sx={{ width: '100%' }}>
@@ -59,7 +62,20 @@ const MyTabs = () => {
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        <SmileyFace />
+        {faceArray.map(() => {
+          return (
+            <SmileyFace
+              width={160}
+              height={160}
+              strokeWidth={6 + Math.random() * 3}
+              eyeOffsetX={20 + Math.random() * 9}
+              eyeOffsetY={20 + Math.random() * 15}
+              eyeRadius={5 + Math.random() * 8}
+              mouthWidth={7 + Math.random() * 6}
+              mouthRadius={25 + Math.random() * 10}
+            />
+          );
+        })}
       </TabPanel>
       <TabPanel value={value} index={1}>
         Item Two
