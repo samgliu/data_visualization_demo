@@ -1,10 +1,16 @@
+import MyTabs from './MyTabs';
 import React from 'react';
-import SmileyFace from './SmileyFace'
+
+interface TabPanelProps {
+  children?: React.ReactNode;
+  index: number;
+  value: number;
+}
 
 function App() {
   return (
     <div className="App">
-      <SmileyFace />
+      <MyTabs />
     </div>
   );
 }
