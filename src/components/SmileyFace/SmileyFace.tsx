@@ -1,5 +1,5 @@
 import BackgroundCircle from './BackgroundCircle';
-import Eyes from './Eyes';
+import Circle from './Circle';
 import { FaceContainer } from './FaceContainer';
 import Mouth from './Mouth';
 
@@ -26,8 +26,8 @@ const SmileyFace = ({
         radius={(height - strokeWidth) / 2}
         strokeWidth={strokeWidth}
       />
-      <Eyes cx={-eyeOffsetX} cy={-eyeOffsetY} r={eyeRadius} />
-      <Eyes cx={eyeOffsetX} cy={-eyeOffsetY} r={eyeRadius} />
+      <Circle cx={-eyeOffsetX} cy={-eyeOffsetY} r={eyeRadius} />
+      <Circle cx={eyeOffsetX} cy={-eyeOffsetY} r={eyeRadius} />
       <Mouth mouthRadius={mouthRadius} mouthWidth={mouthWidth} />
     </FaceContainer>
   );

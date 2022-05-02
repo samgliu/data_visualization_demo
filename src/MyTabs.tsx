@@ -1,5 +1,7 @@
 import { Box, Tab, Tabs, Typography } from '@mui/material/';
 
+import ColorVisualization from './components/CSVDataVisualization/ColorVisualization';
+import MouseFollowingCircle from './components/MouseFollowing/MouseFollowingCircle';
 import SmileyFace from './components/SmileyFace/SmileyFace';
 import { range } from 'd3';
 import { useState } from 'react';
@@ -57,16 +59,17 @@ const MyTabs = () => {
           aria-label="basic tabs example"
         >
           <Tab label="Smiley Face" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+          <Tab label="Mouse Following" {...a11yProps(1)} />
+          <Tab label="Color Visualization" {...a11yProps(2)} />
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        {faceArray.map(() => {
+        {faceArray.map((index) => {
           return (
             <SmileyFace
               width={160}
               height={160}
+              key={index}
               strokeWidth={6 + Math.random() * 3}
               eyeOffsetX={20 + Math.random() * 9}
               eyeOffsetY={20 + Math.random() * 15}
@@ -78,10 +81,10 @@ const MyTabs = () => {
         })}
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <MouseFollowingCircle />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <ColorVisualization />
       </TabPanel>
     </Box>
   );
