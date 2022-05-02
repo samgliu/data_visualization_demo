@@ -1,4 +1,3 @@
-import React from 'react';
 import { arc } from 'd3';
 const width = 960;
 const height = 500;
