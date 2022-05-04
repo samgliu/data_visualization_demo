@@ -1,9 +1,10 @@
+import Header from './components/Header';
 import MyTabs from './MyTabs';
-import React from 'react';
 
 function App() {
   return (
     <div className="App">
+      <Header />
       <MyTabs />
     </div>
   );

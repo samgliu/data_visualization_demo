@@ -6,8 +6,8 @@ const MouseFollowingCircle = () => {
   const width = 960;
   const height = 500;
   const circleRadius = 30;
-  const offsetX = 25;
-  const offsetY = 130;
+  const offsetX = 0;
+  const offsetY = 120;
   const initialMousePosition = { x: width / 2, y: height / 2 };
   const [mousePosition, setMousePosition] = useState(initialMousePosition);
 
