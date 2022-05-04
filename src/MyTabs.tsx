@@ -152,7 +152,7 @@ function MyTab() {
   const currentTab = routeMatch?.pattern?.path;
 
   return (
-    <Tabs value={currentTab} variant="scrollable" color="primary">
+    <Tabs value={currentTab} variant="scrollable">
       <Tab
         label="Smiley Faces"
         value="/smiley-faces"
@@ -178,7 +178,7 @@ function MyTab() {
 export default function MyTabs() {
   return (
     <Router>
-      <Box sx={{ width: '100%' }}>
+      <Box sx={{ width: '100%', padding: 1 }}>
         <MyTab />
         <Routes>
           <Route path="/smiley-faces" element={<SmileyFaces />} />
