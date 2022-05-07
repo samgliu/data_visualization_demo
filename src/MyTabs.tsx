@@ -10,12 +10,13 @@ import {
 } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
-import MPG from './components/CSVDataVisualization/MPGVisualization';
+import Car from './components/CSVDataVisualization/VisualizationCar';
 import MouseFollowingCircle from './components/MouseFollowing/MouseFollowingCircle';
 import SmileyFaces from './components/SmileyFace/SmileyFaces';
 import { StaticRouter } from 'react-router-dom/server';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
+import Temp from './components/CSVDataVisualization/VisualizationTemp';
 
 function Router(props: { children?: React.ReactNode }) {
   const { children } = props;
@@ -54,7 +55,8 @@ function MyTab() {
   const routeMatch = useRouteMatch([
     '/mouse-following-circle',
     '/smiley-faces',
-    '/visualization-mpg',
+    '/visualization-car',
+    '/visualization-temp',
   ]);
   const currentTab = routeMatch?.pattern?.path;
 
@@ -73,9 +75,15 @@ function MyTab() {
         component={Link}
       />
       <Tab
-        label="Visualization MPG"
-        value="/visualization-mpg"
-        to="/visualization-mpg"
+        label="Visualization Car"
+        value="/visualization-car"
+        to="/visualization-car"
+        component={Link}
+      />
+      <Tab
+        label="Visualization Temperature"
+        value="/visualization-temp"
+        to="/visualization-temp"
         component={Link}
       />
     </Tabs>
@@ -93,7 +101,8 @@ export default function MyTabs() {
             path="/mouse-following-circle"
             element={<MouseFollowingCircle />}
           />
-          <Route path="/visualization-mpg" element={<MPG />} />
+          <Route path="/visualization-car" element={<Car />} />
+          <Route path="/visualization-temp" element={<Temp />} />
         </Routes>
       </Box>
     </Router>
