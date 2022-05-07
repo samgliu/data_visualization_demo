@@ -1,6 +1,6 @@
-import { csv } from 'd3';
+import { DSVRowArray, csv } from 'd3';
 
-export const getData = async (csvUrl) => {
+export const getData = async (csvUrl: string): Promise<DSVRowArray<string>> => {
   const data = await csv(csvUrl);
 
   // Have a look at the attributes available in the console!

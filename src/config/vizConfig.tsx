@@ -1,6 +1,7 @@
 // Appearance customization to improve readability.
 // See https://vega.github.io/vega-lite/docs/
-const dark = '#3e3c38';
+const dark = '#4a4a4a';
+const skyBlue = '#87ceeb'
 export const config = {
   axis: {
     domain: false,
@@ -13,7 +14,7 @@ export const config = {
     },
     'guide-title': {
       fontSize: 30,
-      fill: dark,
+      fill: skyBlue,
     },
   },
 };

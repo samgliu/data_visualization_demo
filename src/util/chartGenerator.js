@@ -71,5 +71,5 @@ export const chartGenerator = async (csvUrl, type) => {
     .height(window.innerHeight)
     .autosize({ type: 'fit', contains: 'padding' })
     .config(config);
-  document.getElementById('chart-container').appendChild(await marks.render());
+  document.getElementById('chart-container')?.appendChild(await marks.render());
 };
