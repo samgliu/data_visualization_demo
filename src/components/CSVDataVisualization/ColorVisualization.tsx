@@ -15,3 +15,4 @@ const ColorVisualization = () => {
 };
 
 export default ColorVisualization;
+

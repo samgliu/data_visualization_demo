@@ -10,7 +10,7 @@ import {
 } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
-import ColorVisualization from './components/CSVDataVisualization/ColorVisualization';
+import MPG from './components/CSVDataVisualization/MPGVisualization';
 import MouseFollowingCircle from './components/MouseFollowing/MouseFollowingCircle';
 import SmileyFaces from './components/SmileyFace/SmileyFaces';
 import { StaticRouter } from 'react-router-dom/server';
@@ -26,7 +26,7 @@ function Router(props: { children?: React.ReactNode }) {
   }
 
   return (
-    <MemoryRouter initialEntries={['/smiley-faces']} initialIndex={0}>
+    <MemoryRouter initialEntries={['/visualization-mpg']} initialIndex={0}>
       {children}
     </MemoryRouter>
   );
@@ -52,9 +52,9 @@ function MyTab() {
   // users, users/new, users/edit.
   // Then the order should be ['users/add', 'users/edit', 'users'].
   const routeMatch = useRouteMatch([
-    '/color-visualization',
     '/mouse-following-circle',
     '/smiley-faces',
+    '/visualization-mpg',
   ]);
   const currentTab = routeMatch?.pattern?.path;
 
@@ -73,9 +73,9 @@ function MyTab() {
         component={Link}
       />
       <Tab
-        label="Color Visualization"
-        value="/color-visualization"
-        to="/color-visualization"
+        label="Visualization MPG"
+        value="/visualization-mpg"
+        to="/visualization-mpg"
         component={Link}
       />
     </Tabs>
@@ -93,7 +93,7 @@ export default function MyTabs() {
             path="/mouse-following-circle"
             element={<MouseFollowingCircle />}
           />
-          <Route path="/color-visualization" element={<ColorVisualization />} />
+          <Route path="/visualization-mpg" element={<MPG />} />
         </Routes>
       </Box>
     </Router>
