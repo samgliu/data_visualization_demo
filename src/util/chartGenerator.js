@@ -33,8 +33,18 @@ const vizTemp = vl
     vl.tooltip().fieldN('temperature')
   );
 
+// viz for population
+const vizPopulation = vl
+  .markBar()
+  .encode(
+    vl.x().fieldN('country').sort('-y'),
+    vl.y().fieldQ('population'),
+    vl.color().fieldN('religion'),
+    vl.tooltip().fieldN('religion')
+  );
+
 vl.register(vega, vegaLite, {
-  view: { renderer: 'svg' },
+  view: { renderer: 'canvas' },
   init: (view) => {
     view.tooltip(new Handler().call);
   },
@@ -46,6 +56,8 @@ const switchType = (type) => {
       return vizCar;
     case 'temp':
       return vizTemp;
+    case 'population':
+      return vizPopulation;
     default:
       return;
   }

@@ -12,6 +12,7 @@ import {
 import Box from '@mui/material/Box';
 import Car from './components/CSVDataVisualization/VisualizationCar';
 import MouseFollowingCircle from './components/MouseFollowing/MouseFollowingCircle';
+import Population from './components/CSVDataVisualization/VisualizationPopulation';
 import SmileyFaces from './components/SmileyFace/SmileyFaces';
 import { StaticRouter } from 'react-router-dom/server';
 import Tab from '@mui/material/Tab';
@@ -27,7 +28,7 @@ function Router(props: { children?: React.ReactNode }) {
   }
 
   return (
-    <MemoryRouter initialEntries={['/visualization-mpg']} initialIndex={0}>
+    <MemoryRouter initialEntries={['/visualization-car']} initialIndex={0}>
       {children}
     </MemoryRouter>
   );
@@ -56,6 +57,7 @@ function MyTab() {
     '/mouse-following-circle',
     '/smiley-faces',
     '/visualization-car',
+    '/visualization-population',
     '/visualization-temp',
   ]);
   const currentTab = routeMatch?.pattern?.path;
@@ -81,6 +83,12 @@ function MyTab() {
         component={Link}
       />
       <Tab
+        label="Visualization Population"
+        value="/visualization-population"
+        to="/visualization-population"
+        component={Link}
+      />
+      <Tab
         label="Visualization Temperature"
         value="/visualization-temp"
         to="/visualization-temp"
@@ -102,6 +110,7 @@ export default function MyTabs() {
             element={<MouseFollowingCircle />}
           />
           <Route path="/visualization-car" element={<Car />} />
+          <Route path="/visualization-population" element={<Population />} />
           <Route path="/visualization-temp" element={<Temp />} />
         </Routes>
       </Box>
