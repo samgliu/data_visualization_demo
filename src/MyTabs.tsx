@@ -11,6 +11,7 @@ import {
 
 import Box from '@mui/material/Box';
 import Car from './components/CSVDataVisualization/VisualizationCar';
+import Color from './components/CSVDataVisualization/VisualizationColor';
 import MouseFollowingCircle from './components/MouseFollowing/MouseFollowingCircle';
 import Population from './components/CSVDataVisualization/VisualizationPopulation';
 import SmileyFaces from './components/SmileyFace/SmileyFaces';
@@ -57,6 +58,7 @@ function MyTab() {
     '/mouse-following-circle',
     '/smiley-faces',
     '/visualization-car',
+    '/visualization-color',
     '/visualization-population',
     '/visualization-temp',
   ]);
@@ -80,6 +82,12 @@ function MyTab() {
         label="Visualization Car"
         value="/visualization-car"
         to="/visualization-car"
+        component={Link}
+      />
+      <Tab
+        label="Visualization Color"
+        value="/visualization-color"
+        to="/visualization-color"
         component={Link}
       />
       <Tab
@@ -110,6 +118,7 @@ export default function MyTabs() {
             element={<MouseFollowingCircle />}
           />
           <Route path="/visualization-car" element={<Car />} />
+          <Route path="/visualization-color" element={<Color />} />
           <Route path="/visualization-population" element={<Population />} />
           <Route path="/visualization-temp" element={<Temp />} />
         </Routes>
