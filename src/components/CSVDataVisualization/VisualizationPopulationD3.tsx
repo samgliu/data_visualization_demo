@@ -1,6 +1,6 @@
 import { format, max, scaleBand, scaleLinear } from 'd3';
 
-import AxisBottom from '../../util/AxisBottom';
+import { AxisBottom } from '../../util/AxisBottom';
 import { AxisLeft } from '../../util/AxisLeft';
 import { Marks } from '../../util/Marks';
 import { useData } from '../../util/useData';
@@ -46,7 +46,7 @@ const VisualizationPopulationD3 = () => {
         >
           Population
         </text>
-        <AxisLeft yScale={yScale} />
+        <AxisLeft yScale={yScale} innerWidth={innerWidth} />
         <AxisBottom
           xScale={xScale}
           innerHeight={innerHeight}

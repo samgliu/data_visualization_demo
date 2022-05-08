@@ -13,6 +13,7 @@ import Box from '@mui/material/Box';
 import Car from './components/CSVDataVisualization/VisualizationCar';
 import Color from './components/CSVDataVisualization/VisualizationColor';
 import MouseFollowingCircle from './components/MouseFollowing/MouseFollowingCircle';
+import PlotD3 from './components/CSVDataVisualization/VisualizationPlot';
 import Population from './components/CSVDataVisualization/VisualizationPopulation';
 import PopulationD3 from './components/CSVDataVisualization/VisualizationPopulationD3';
 import SmileyFaces from './components/SmileyFace/SmileyFaces';
@@ -60,6 +61,7 @@ function MyTab() {
     '/smiley-faces',
     '/visualization-car',
     '/visualization-color',
+    '/visualization-plot-d3',
     '/visualization-population',
     '/visualization-population-d3',
     '/visualization-temp',
@@ -90,6 +92,12 @@ function MyTab() {
         label="Visualization Color"
         value="/visualization-color"
         to="/visualization-color"
+        component={Link}
+      />
+      <Tab
+        label="Visualization Plot D3"
+        value="/visualization-plot-d3"
+        to="/visualization-plot-d3"
         component={Link}
       />
       <Tab
@@ -127,6 +135,7 @@ export default function MyTabs() {
           />
           <Route path="/visualization-car" element={<Car />} />
           <Route path="/visualization-color" element={<Color />} />
+          <Route path="/visualization-plot-d3" element={<PlotD3 />} />
           <Route path="/visualization-population" element={<Population />} />
           <Route
             path="/visualization-population-d3"

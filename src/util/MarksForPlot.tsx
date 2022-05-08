@@ -1,29 +1,30 @@
-interface MarksProps {
+interface MarksForPlotProps {
   data: any;
   xScale: any;
   yScale: any;
   xValue: any;
   yValue: any;
   tooltipFormat: any;
+  circleRadius: any;
 }
 
-export const Marks = ({
+export const MarksForPlot = ({
   data,
   xScale,
   yScale,
   xValue,
   yValue,
   tooltipFormat,
-}: MarksProps) =>
+  circleRadius,
+}: MarksForPlotProps) =>
   data.map((d: any, index: number) => (
-    <rect
+    <circle
       className="mark"
       key={yValue(d) + '-' + index}
-      x={0}
-      y={yScale(yValue(d))}
-      width={xScale(xValue(d))}
-      height={yScale.bandwidth()}
+      cy={yScale(yValue(d))}
+      cx={xScale(xValue(d))}
+      r={circleRadius}
     >
       <title>{tooltipFormat(xValue(d))}</title>
-    </rect>
+    </circle>
   ));

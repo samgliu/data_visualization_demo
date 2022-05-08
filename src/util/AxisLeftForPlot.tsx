@@ -1,4 +1,4 @@
-export const AxisLeft = ({
+export const AxisLeftForPlot = ({
   yScale,
   innerWidth,
   tickOffset = 3,
@@ -7,19 +7,14 @@ export const AxisLeft = ({
   innerWidth: number;
   tickOffset?: number;
 }) =>
-  yScale.domain().map((tickValue: any, index: number) => (
+  yScale.ticks().map((tickValue: any, index: number) => (
     <g
       key={tickValue + '-' + index}
       className="tick"
       transform={`translate(0,${yScale(tickValue)})`}
     >
       <line x2={innerWidth} />
-      <text
-        key={tickValue}
-        style={{ textAnchor: 'end' }}
-        x={-tickOffset}
-        dy=".32em"
-      >
+      <text style={{ textAnchor: 'end' }} x={-tickOffset} dy=".32em">
         {tickValue}
       </text>
     </g>
