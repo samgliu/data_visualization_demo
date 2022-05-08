@@ -22,6 +22,7 @@ import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import Temp from './components/CSVDataVisualization/VisualizationTemp';
 import TempD3 from './components/CSVDataVisualization/VisualizationTempD3';
+import WorldMapD3 from './components/CSVDataVisualization/VisualizationWorldMapD3';
 
 function Router(props: { children?: React.ReactNode }) {
   const { children } = props;
@@ -66,7 +67,8 @@ function MyTab() {
     '/visualization-population',
     '/visualization-population-d3',
     '/visualization-temp',
-    'visualization-temp-d3',
+    '/visualization-temp-d3',
+    '/visualization-worldmap-d3',
   ]);
   const currentTab = routeMatch?.pattern?.path;
 
@@ -126,6 +128,12 @@ function MyTab() {
         to="/visualization-temp-d3"
         component={Link}
       />
+      <Tab
+        label="Visualization WorldMap d3"
+        value="/visualization-worldmap-d3"
+        to="/visualization-worldmap-d3"
+        component={Link}
+      />
     </Tabs>
   );
 }
@@ -151,6 +159,7 @@ export default function MyTabs() {
           />
           <Route path="/visualization-temp" element={<Temp />} />
           <Route path="/visualization-temp-d3" element={<TempD3 />} />
+          <Route path="/visualization-worldmap-d3" element={<WorldMapD3 />} />
         </Routes>
       </Box>
     </Router>

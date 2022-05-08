@@ -13,6 +13,8 @@
 - Visualization Population  
 - Visualization Population D3  
 - Visualization Temperature  
+- Visualization Temperature D3
+- Visualization WorldMap D3  
 
 # To Do List
 - Convert vega-lite-api part to TypeScript

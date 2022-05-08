@@ -19,7 +19,7 @@ export const MarksForPlot = ({
 }: MarksForPlotProps) =>
   data.map((d: any, index: number) => (
     <circle
-      className="mark"
+      className="marks"
       key={yValue(d) + '-' + index}
       cy={yScale(yValue(d))}
       cx={xScale(xValue(d))}

@@ -17,7 +17,7 @@ export const Marks = ({
 }: MarksProps) =>
   data.map((d: any, index: number) => (
     <rect
-      className="mark"
+      className="marks"
       key={yValue(d) + '-' + index}
       x={0}
       y={yScale(yValue(d))}

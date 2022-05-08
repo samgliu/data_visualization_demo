@@ -22,7 +22,7 @@ MarksForPlotProps) => {
   return (
     <>
       {/* {data.map((d: any, index: number) => ( */}
-      <g className="mark">
+      <g className="marks">
         <path
           className="path"
           fill="none"
