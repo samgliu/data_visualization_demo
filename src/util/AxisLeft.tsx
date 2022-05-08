@@ -18,7 +18,7 @@ export const AxisLeft = ({
         key={tickValue}
         style={{ textAnchor: 'end' }}
         x={-tickOffset}
-        dy=".32em"
+        dy="1.32em"
       >
         {tickValue}
       </text>
