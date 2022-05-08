@@ -14,6 +14,7 @@ import Car from './components/CSVDataVisualization/VisualizationCar';
 import Color from './components/CSVDataVisualization/VisualizationColor';
 import MouseFollowingCircle from './components/MouseFollowing/MouseFollowingCircle';
 import Population from './components/CSVDataVisualization/VisualizationPopulation';
+import PopulationD3 from './components/CSVDataVisualization/VisualizationPopulationD3';
 import SmileyFaces from './components/SmileyFace/SmileyFaces';
 import { StaticRouter } from 'react-router-dom/server';
 import Tab from '@mui/material/Tab';
@@ -60,6 +61,7 @@ function MyTab() {
     '/visualization-car',
     '/visualization-color',
     '/visualization-population',
+    '/visualization-population-d3',
     '/visualization-temp',
   ]);
   const currentTab = routeMatch?.pattern?.path;
@@ -97,6 +99,12 @@ function MyTab() {
         component={Link}
       />
       <Tab
+        label="Visualization Population D3"
+        value="/visualization-population-d3"
+        to="/visualization-population-d3"
+        component={Link}
+      />
+      <Tab
         label="Visualization Temperature"
         value="/visualization-temp"
         to="/visualization-temp"
@@ -120,6 +128,10 @@ export default function MyTabs() {
           <Route path="/visualization-car" element={<Car />} />
           <Route path="/visualization-color" element={<Color />} />
           <Route path="/visualization-population" element={<Population />} />
+          <Route
+            path="/visualization-population-d3"
+            element={<PopulationD3 />}
+          />
           <Route path="/visualization-temp" element={<Temp />} />
         </Routes>
       </Box>
