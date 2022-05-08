@@ -19,6 +19,18 @@ pre {
 .mark {
   fill: #5a9ee8;
 }
+
+.line-circle {
+  fill: #5a9ee8;
+}
+
+.path {
+  stroke: #5a9ee8;
+  stroke-width: 4;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
 .axis-label {
   font-size: 2.5em;
   fill: #635f5d;

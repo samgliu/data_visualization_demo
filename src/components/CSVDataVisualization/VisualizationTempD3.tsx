@@ -1,9 +1,9 @@
-import { extent, format, scaleLinear } from 'd3';
+import { extent, scaleLinear, scaleTime, timeFormat } from 'd3';
 
 import { AxisBottom } from '../../util/AxisBottom';
 import { AxisLeftForPlot } from '../../util/AxisLeftForPlot';
-import { MarksForPlot } from '../../util/MarksForPlot';
-import { useIrisData } from '../../util/useIrisData';
+import { MarksForLine } from '../../util/MarksForLine';
+import { useTempData } from '../../util/useTempData';
 
 const width = 960;
 const height = 500;
@@ -11,30 +11,30 @@ const margin = { top: 20, right: 30, bottom: 65, left: 90 };
 const xAxisLabelOffset = 50;
 const yAxisLabelOffset = 45;
 
-const VisualizationPlotD3 = () => {
-  const data = useIrisData();
+const VisualizationTempD3 = () => {
+  const data = useTempData();
   if (!data) return <pre>Loading</pre>;
 
   const innerHeight = height - margin.top - margin.bottom;
   const innerWidth = width - margin.left - margin.right;
 
-  const xValue = (d: any) => d.petal_length;
-  const xAxisLabel = 'Petal Length';
+  const xValue = (d: any) => d.timestamp;
+  const xAxisLabel = 'Time';
 
-  const yValue = (d: any) => d.sepal_width;
-  const yAxisLabel = 'Sepal Width';
-  const siFormat = format('.2s');
-  const xAxisTickFormat = (tickValue: number) =>
-    siFormat(tickValue).replace('G', 'B');
+  const yValue = (d: any) => d.temperature;
+  const yAxisLabel = 'Temperature';
 
-  const xScale = scaleLinear()
+  const xAxisTickFormat = timeFormat('%a');
+  
+  const xScale = scaleTime()
     .domain(extent(data, xValue) as any)
     .range([0, innerWidth])
     .nice();
 
   const yScale = scaleLinear()
     .domain(extent(data, yValue) as any)
-    .range([0, innerHeight]);
+    .range([innerHeight, 0])
+    .nice();
 
   console.log(data[0]);
 
@@ -69,7 +69,7 @@ const VisualizationPlotD3 = () => {
         >
           {xAxisLabel}
         </text>
-        <MarksForPlot
+        <MarksForLine
           data={data}
           xScale={xScale}
           yScale={yScale}
@@ -83,4 +83,4 @@ const VisualizationPlotD3 = () => {
   );
 };
 
-export default VisualizationPlotD3;
+export default VisualizationTempD3;

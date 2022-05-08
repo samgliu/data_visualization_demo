@@ -21,6 +21,7 @@ import { StaticRouter } from 'react-router-dom/server';
 import Tab from '@mui/material/Tab';
 import Tabs from '@mui/material/Tabs';
 import Temp from './components/CSVDataVisualization/VisualizationTemp';
+import TempD3 from './components/CSVDataVisualization/VisualizationTempD3';
 
 function Router(props: { children?: React.ReactNode }) {
   const { children } = props;
@@ -65,6 +66,7 @@ function MyTab() {
     '/visualization-population',
     '/visualization-population-d3',
     '/visualization-temp',
+    'visualization-temp-d3',
   ]);
   const currentTab = routeMatch?.pattern?.path;
 
@@ -118,6 +120,12 @@ function MyTab() {
         to="/visualization-temp"
         component={Link}
       />
+      <Tab
+        label="Visualization Temperature d3"
+        value="/visualization-temp-d3"
+        to="/visualization-temp-d3"
+        component={Link}
+      />
     </Tabs>
   );
 }
@@ -142,6 +150,7 @@ export default function MyTabs() {
             element={<PopulationD3 />}
           />
           <Route path="/visualization-temp" element={<Temp />} />
+          <Route path="/visualization-temp-d3" element={<TempD3 />} />
         </Routes>
       </Box>
     </Router>
