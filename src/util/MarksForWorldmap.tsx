@@ -15,8 +15,12 @@ export const MarksForWorldmap = ({
     <g className="marks">
       <path className="sphere" d={path({ type: 'Sphere' }) as any} />
       <path className="graticules" d={path(graticule()) as any} />
-      {land.features.map((feature: any) => (
-        <path className="land" d={path(feature) as any} />
+      {land.features.map((feature: any, index: number) => (
+        <path
+          key={`worldmap-${index}`}
+          className="land"
+          d={path(feature) as any}
+        />
       ))}
       <path className="interiors" d={path(interiors) as any} />
     </g>
