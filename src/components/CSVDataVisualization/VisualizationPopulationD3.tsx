@@ -18,7 +18,7 @@ const VisualizationPopulationD3 = () => {
   const innerHeight = height - margin.top - margin.bottom;
   const innerWidth = width - margin.left - margin.right;
 
-  const xValue = (d: { Population: any }) => d.Population;
+  const xValue = (d: { Population: any }) => d.Population * 1000;
   const yValue = (d: { Country: any }) => d.Country;
 
   const siFormat = format('.2s');
