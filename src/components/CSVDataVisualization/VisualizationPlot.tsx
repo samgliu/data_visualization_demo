@@ -1,4 +1,4 @@
-import { extent, format, scaleBand, scaleLinear } from 'd3';
+import { extent, format, scaleLinear } from 'd3';
 
 import { AxisBottom } from '../../util/AxisBottom';
 import { AxisLeftForPlot } from '../../util/AxisLeftForPlot';
