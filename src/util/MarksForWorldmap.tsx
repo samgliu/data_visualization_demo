@@ -1,7 +1,10 @@
 import { geoGraticule, geoNaturalEarth1, geoPath } from 'd3';
 
 interface MarksForPlotProps {
-  data: any;
+  worldAtlas: any;
+  worldCities: any;
+  sizeScale: any;
+  sizeValue: any;
 }
 
 const projection = geoNaturalEarth1();
@@ -9,7 +12,10 @@ const path = geoPath(projection);
 const graticule = geoGraticule();
 
 export const MarksForWorldmap = ({
-  data: { land, interiors },
+  worldAtlas: { land, interiors },
+  worldCities,
+  sizeScale,
+  sizeValue,
 }: MarksForPlotProps) => {
   return (
     <g className="marks">
@@ -23,6 +29,17 @@ export const MarksForWorldmap = ({
         />
       ))}
       <path className="interiors" d={path(interiors) as any} />
+      {worldCities.map((d: any) => {
+        const [x, y] = projection([d.lng, d.lat]) as any;
+        return (
+          <circle
+            className="city-circle"
+            cx={x}
+            cy={y}
+            r={sizeScale(sizeValue(d))}
+          />
+        );
+      })}
     </g>
   );
 };

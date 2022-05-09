@@ -21,7 +21,7 @@ pre {
 }
 
 .marks .land {
-  fill: #5a9ee8;
+  fill: #a7cdf5;
 }
 .marks .sphere {
   fill: #ececec;
@@ -36,7 +36,7 @@ pre {
 }
 
 .line-circle {
-  fill: #4a99ee;
+  fill: #5a9ee8;
 }
 
 .path {
@@ -57,4 +57,9 @@ select {
 }
 select option {
   font-size: 1rem;
+}
+
+.city-circle {
+  fill: #2457d9;
+  opacity: 0.3;
 }
