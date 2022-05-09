@@ -1,7 +1,8 @@
-import { extent, format, scaleLinear } from 'd3';
+import { extent, format, scaleLinear, scaleOrdinal } from 'd3';
 
 import { AxisBottom } from '../../util/AxisBottom';
 import { AxisLeftForPlot } from '../../util/AxisLeftForPlot';
+import { ColorLegend } from '../../util/colorLegends';
 import Dropdown from '../Dropdown';
 import { MarksForPlot } from '../../util/MarksForPlot';
 import { useIrisData } from '../../util/useIrisData';
@@ -10,7 +11,7 @@ import { useState } from 'react';
 const width = 960;
 const menuHeight = 75;
 const height = 500 - menuHeight;
-const margin = { top: 20, right: 30, bottom: 65, left: 90 };
+const margin = { top: 20, right: 200, bottom: 65, left: 90 };
 const xAxisLabelOffset = 50;
 const yAxisLabelOffset = 45;
 
@@ -43,6 +44,10 @@ const VisualizationPlotD3 = () => {
   const yValue = (d: any) => d[yAttribute];
   const yAxisLabel = getLabel(yAttribute);
 
+  const colorValue = (d: any) => d.species;
+  const colorLegendLabel = 'Species';
+  const circleRadius = 7;
+
   if (!data) return <pre>Loading</pre>;
   const innerHeight = height - margin.top - margin.bottom;
   const innerWidth = width - margin.left - margin.right;
@@ -58,6 +63,10 @@ const VisualizationPlotD3 = () => {
   const yScale = scaleLinear()
     .domain(extent(data, yValue) as any)
     .range([0, innerHeight]);
+
+  const colorScale = scaleOrdinal()
+    .domain(data.map(colorValue) as any)
+    .range(['#11f1c3', '#9fd58c', '#c30462']);
 
   console.log(data[0]);
 
@@ -121,11 +130,24 @@ const VisualizationPlotD3 = () => {
             data={data}
             xScale={xScale}
             yScale={yScale}
+            colorScale={colorScale}
             xValue={xValue}
             yValue={yValue}
+            colorValue={colorValue}
             tooltipFormat={xAxisTickFormat}
             circleRadius={7}
           />
+          <g transform={`translate(${innerWidth + 60}, 60)`}>
+            <text x={35} y={-25} className="axis-label" textAnchor="middle">
+              {colorLegendLabel}
+            </text>
+            <ColorLegend
+              tickSpacing={22}
+              tickTextOffset={12}
+              tickSize={circleRadius}
+              colorScale={colorScale}
+            />
+          </g>
         </g>
       </svg>
     </>
