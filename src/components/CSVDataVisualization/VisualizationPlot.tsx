@@ -1,4 +1,5 @@
 import { extent, format, scaleLinear, scaleOrdinal } from 'd3';
+import { useMemo, useState } from 'react';
 
 import { AxisBottom } from '../../util/AxisBottom';
 import { AxisLeftForPlot } from '../../util/AxisLeftForPlot';
@@ -7,7 +8,6 @@ import Dropdown from '../Dropdown';
 import { MarksForPlot } from '../../util/MarksForPlot';
 import { randomColorGenerator } from '../../util/randomColorGenerator';
 import { useIrisData } from '../../util/useIrisData';
-import { useState } from 'react';
 
 const width = 960;
 const menuHeight = 75;
@@ -45,6 +45,7 @@ const VisualizationPlotD3 = () => {
   const yValue = (d: any) => d[yAttribute];
   const yAxisLabel = getLabel(yAttribute);
 
+  const colors = useMemo(() => randomColorGenerator(3), []);
   const colorValue = (d: any) => d.species;
   const colorLegendLabel = 'Species';
   const circleRadius = 7;
@@ -67,7 +68,7 @@ const VisualizationPlotD3 = () => {
 
   const colorScale = scaleOrdinal()
     .domain(data.map(colorValue) as any)
-    .range(randomColorGenerator(3));
+    .range(colors);
 
   console.log(data[0]);
 
