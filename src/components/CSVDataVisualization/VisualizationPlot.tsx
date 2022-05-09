@@ -15,6 +15,7 @@ const height = 500 - menuHeight;
 const margin = { top: 20, right: 200, bottom: 65, left: 90 };
 const xAxisLabelOffset = 50;
 const yAxisLabelOffset = 45;
+const fadedOpacity = 0.2;
 
 const attributes = [
   { value: 'sepal_length', label: 'Sepal Length' },
@@ -49,8 +50,12 @@ const VisualizationPlotD3 = () => {
   const colorValue = (d: any) => d.species;
   const colorLegendLabel = 'Species';
   const circleRadius = 7;
+  const [hoveredValue, setHoveredValue] = useState<string | null>(null);
 
   if (!data) return <pre>Loading</pre>;
+
+  const filteredData = data.filter((d: any) => colorValue(d) === hoveredValue);
+
   const innerHeight = height - margin.top - margin.bottom;
   const innerWidth = width - margin.left - margin.right;
   const siFormat = format('.2s');
@@ -128,8 +133,21 @@ const VisualizationPlotD3 = () => {
           >
             {xAxisLabel}
           </text>
+          <g opacity={!!hoveredValue ? fadedOpacity : 1}>
+            <MarksForPlot
+              data={data}
+              xScale={xScale}
+              yScale={yScale}
+              colorScale={colorScale}
+              xValue={xValue}
+              yValue={yValue}
+              colorValue={colorValue}
+              tooltipFormat={xAxisTickFormat}
+              circleRadius={7}
+            />
+          </g>
           <MarksForPlot
-            data={data}
+            data={filteredData}
             xScale={xScale}
             yScale={yScale}
             colorScale={colorScale}
@@ -148,6 +166,9 @@ const VisualizationPlotD3 = () => {
               tickTextOffset={12}
               tickSize={circleRadius}
               colorScale={colorScale}
+              onHover={setHoveredValue}
+              hoveredValue={hoveredValue}
+              fadedOpacity={fadedOpacity}
             />
           </g>
         </g>
