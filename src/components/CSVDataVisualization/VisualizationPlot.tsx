@@ -5,6 +5,7 @@ import { AxisLeftForPlot } from '../../util/AxisLeftForPlot';
 import { ColorLegend } from '../../util/colorLegends';
 import Dropdown from '../Dropdown';
 import { MarksForPlot } from '../../util/MarksForPlot';
+import { randomColorGenerator } from '../../util/randomColorGenerator';
 import { useIrisData } from '../../util/useIrisData';
 import { useState } from 'react';
 
@@ -66,7 +67,7 @@ const VisualizationPlotD3 = () => {
 
   const colorScale = scaleOrdinal()
     .domain(data.map(colorValue) as any)
-    .range(['#11f1c3', '#9fd58c', '#c30462']);
+    .range(randomColorGenerator(3));
 
   console.log(data[0]);
 
