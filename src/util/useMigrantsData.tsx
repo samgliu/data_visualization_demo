@@ -20,7 +20,8 @@ export const useMigrantsData = () => {
     };
     csv(csvUrl, row).then(setData as any);
     console.log(data && data[0]);
-  }, [data]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return data;
 };
