@@ -12,22 +12,30 @@ import {
 import { AxisBottom } from '../../util/AxisBottom';
 import { AxisLeftForPlot } from '../../util/AxisLeftForPlot';
 import { MarksForMigrants } from '../../util/MarksForMigrants';
-import { useMigrantsData } from '../../util/useMigrantsData';
 
-const width = 960;
-const height = 500;
-const margin = { top: 20, right: 30, bottom: 65, left: 90 };
-const xAxisLabelOffset = 50;
-const yAxisLabelOffset = 45;
+const margin = { top: 0, right: 30, bottom: 20, left: 45 };
+const xAxisLabelOffset = 54;
+const yAxisLabelOffset = 30;
 
-const VisualizationScatterPlotD3 = () => {
-  const data = useMigrantsData();
-  if (!data) return <pre>Loading</pre>;
+interface VisualizationScatterPlotD3Props {
+  data: any;
+  width: any;
+  height: any;
+  setBrushExtent: any;
+  xValue: any;
+}
+
+const VisualizationScatterPlotD3 = ({
+  data,
+  width,
+  height,
+  setBrushExtent,
+  xValue,
+}: VisualizationScatterPlotD3Props) => {
 
   const innerHeight = height - margin.top - margin.bottom;
   const innerWidth = width - margin.left - margin.right;
 
-  const xValue = (d: any) => d['Reported Date'];
   const xAxisLabel = 'Reported Date';
 
   const yValue = (d: any) => d['Total Dead and Missing'];

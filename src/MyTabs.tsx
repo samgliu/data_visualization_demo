@@ -12,7 +12,7 @@ import {
 import Box from '@mui/material/Box';
 import Car from './components/CSVDataVisualization/VisualizationCar';
 import Color from './components/CSVDataVisualization/VisualizationColor';
-import MigrantsD3 from './components/CSVDataVisualization/VisualizationMigrantsMapD3';
+import MigrantsD3 from './components/CSVDataVisualization/VisualizationMigrantsD3';
 import MouseFollowingCircle from './components/MouseFollowing/MouseFollowingCircle';
 import PlotD3 from './components/CSVDataVisualization/VisualizationPlot';
 import Population from './components/CSVDataVisualization/VisualizationPopulation';
@@ -64,6 +64,7 @@ function MyTab() {
     '/smiley-faces',
     '/visualization-car',
     '/visualization-color',
+    '/visualization-migrants-d3',
     '/visualization-plot-d3',
     '/visualization-population',
     '/visualization-population-d3',
@@ -101,6 +102,12 @@ function MyTab() {
         component={Link}
       />
       <Tab
+        label="Visualization Migrants D3"
+        value="/visualization-migrants-d3"
+        to="/visualization-migrants-d3"
+        component={Link}
+      />
+      <Tab
         label="Visualization Plot D3"
         value="/visualization-plot-d3"
         to="/visualization-plot-d3"
@@ -116,12 +123,6 @@ function MyTab() {
         label="Visualization Population D3"
         value="/visualization-population-d3"
         to="/visualization-population-d3"
-        component={Link}
-      />
-      <Tab
-        label="Visualization Scatter Plot D3"
-        value="/visualization-scatter-plot-d3"
-        to="/visualization-scatter-plot-d3"
         component={Link}
       />
       <Tab
@@ -159,15 +160,12 @@ export default function MyTabs() {
           />
           <Route path="/visualization-car" element={<Car />} />
           <Route path="/visualization-color" element={<Color />} />
+          <Route path="/visualization-migrants-d3" element={<MigrantsD3 />} />
           <Route path="/visualization-plot-d3" element={<PlotD3 />} />
           <Route path="/visualization-population" element={<Population />} />
           <Route
             path="/visualization-population-d3"
             element={<PopulationD3 />}
-          />
-          <Route
-            path="/visualization-scatter-plot-d3"
-            element={<MigrantsD3 />}
           />
           <Route path="/visualization-temp" element={<Temp />} />
           <Route path="/visualization-temp-d3" element={<TempD3 />} />
