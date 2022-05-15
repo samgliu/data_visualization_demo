@@ -12,6 +12,7 @@ import {
 import Box from '@mui/material/Box';
 import Car from './components/CSVDataVisualization/VisualizationCar';
 import Color from './components/CSVDataVisualization/VisualizationColor';
+import MigrantsD3 from './components/CSVDataVisualization/VisualizationScatterPlotD3';
 import MouseFollowingCircle from './components/MouseFollowing/MouseFollowingCircle';
 import PlotD3 from './components/CSVDataVisualization/VisualizationPlot';
 import Population from './components/CSVDataVisualization/VisualizationPopulation';
@@ -66,6 +67,7 @@ function MyTab() {
     '/visualization-plot-d3',
     '/visualization-population',
     '/visualization-population-d3',
+    '/visualization-scatter-plot-d3',
     '/visualization-temp',
     '/visualization-temp-d3',
     '/visualization-worldmap-d3',
@@ -117,6 +119,12 @@ function MyTab() {
         component={Link}
       />
       <Tab
+        label="Visualization Scatter Plot D3"
+        value="/visualization-scatter-plot-d3"
+        to="/visualization-scatter-plot-d3"
+        component={Link}
+      />
+      <Tab
         label="Visualization Temperature"
         value="/visualization-temp"
         to="/visualization-temp"
@@ -156,6 +164,10 @@ export default function MyTabs() {
           <Route
             path="/visualization-population-d3"
             element={<PopulationD3 />}
+          />
+          <Route
+            path="/visualization-scatter-plot-d3"
+            element={<MigrantsD3 />}
           />
           <Route path="/visualization-temp" element={<Temp />} />
           <Route path="/visualization-temp-d3" element={<TempD3 />} />

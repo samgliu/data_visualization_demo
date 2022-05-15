@@ -21,6 +21,9 @@
 - Visualization Population D3  
 <img alt="" width="400px" src="public/screenshots/populationD3.png" />
 
+- Visualization Migrants Histogram D3  
+<img alt="" width="400px" src="public/screenshots/migrantsHistogram.png" />
+
 - Visualization Temperature  
 - Visualization Temperature D3  
 <img alt="" width="400px" src="public/screenshots/tempD3.png" />

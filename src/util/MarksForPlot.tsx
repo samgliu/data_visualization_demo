@@ -2,10 +2,10 @@ interface MarksForPlotProps {
   data: any;
   xScale: any;
   yScale: any;
-  colorScale: any;
+  colorScale?: any;
   xValue: any;
   yValue: any;
-  colorValue: any;
+  colorValue?: any;
   tooltipFormat: any;
   circleRadius: any;
 }
@@ -26,7 +26,7 @@ export const MarksForPlot = ({
       key={yValue(d) + '-' + index}
       cy={yScale(yValue(d))}
       cx={xScale(xValue(d))}
-      fill={colorScale(colorValue(d))}
+      fill={!!colorValue && !!colorScale && colorScale(colorValue(d))}
       r={circleRadius}
     >
       <title>{tooltipFormat(xValue(d))}</title>
