@@ -13,9 +13,13 @@ export const useMigrantsData = () => {
     const row = (d: any) => {
       d['Total Dead and Missing'] = +d['Total Dead and Missing'];
       d['Reported Date'] = new Date(d['Reported Date']);
+      d['Location Coordinates'] = d['Location Coordinates']
+        .split(',')
+        .map((d: string) => +d);
       return d;
     };
     csv(csvUrl, row).then(setData as any);
+    console.log(data && data[0]);
   }, []);
 
   return data;

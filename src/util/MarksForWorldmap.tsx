@@ -2,7 +2,7 @@ import { geoGraticule, geoNaturalEarth1, geoPath } from 'd3';
 
 interface MarksForPlotProps {
   worldAtlas: any;
-  worldCities: any;
+  data: any;
   sizeScale: any;
   sizeValue: any;
 }
@@ -13,7 +13,7 @@ const graticule = geoGraticule();
 
 export const MarksForWorldmap = ({
   worldAtlas: { land, interiors },
-  worldCities,
+  data,
   sizeScale,
   sizeValue,
 }: MarksForPlotProps) => {
@@ -29,7 +29,11 @@ export const MarksForWorldmap = ({
         />
       ))}
       <path className="interiors" d={path(interiors) as any} />
-      {worldCities.map((d: any) => {
+      {data.map((d: any) => {
+        if (d['Location Coordinates']) {
+          d.lng = d['Location Coordinates'][1];
+          d.lat = d['Location Coordinates'][0];
+        }
         const [x, y] = projection([d.lng, d.lat]) as any;
         return (
           <circle

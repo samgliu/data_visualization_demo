@@ -1,29 +1,29 @@
 import { max, scaleSqrt } from 'd3';
 
 import { MarksForWorldmap } from '../../util/MarksForWorldmap';
-import { useWorldmapCitiesData } from '../../util/useWorldmapCitiesData';
+import { useMigrantsData } from '../../util/useMigrantsData';
 import { useWorldmapData } from '../../util/useWorldmapData';
 
 const width = 960;
 const height = 500;
 const maxRadius = 16;
 
-const VisualizationWorldMapD3 = () => {
+const VisualizationMigrantsMapD3 = () => {
   const worldAtlas = useWorldmapData();
-  const worldCities = useWorldmapCitiesData();
+  const data = useMigrantsData();
 
-  if (!worldAtlas || !worldCities) return <pre>Loading</pre>;
+  if (!worldAtlas || !data) return <pre>Loading</pre>;
 
-  const sizeValue = (d: any) => d.population;
+  const sizeValue = (d: any) => d['Total Dead and Missing'];
   const sizeScale = scaleSqrt()
-    .domain([0, max(worldCities, sizeValue)] as any)
+    .domain([0, max(data, sizeValue)] as any)
     .range([0, maxRadius]);
-
+  console.log(data && data[0]);
   return (
     <svg width={width} height={height}>
       <MarksForWorldmap
         worldAtlas={worldAtlas}
-        data={worldCities}
+        data={data}
         sizeScale={sizeScale}
         sizeValue={sizeValue}
       />
@@ -31,4 +31,4 @@ const VisualizationWorldMapD3 = () => {
   );
 };
 
-export default VisualizationWorldMapD3;
+export default VisualizationMigrantsMapD3;

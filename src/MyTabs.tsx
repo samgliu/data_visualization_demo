@@ -12,7 +12,7 @@ import {
 import Box from '@mui/material/Box';
 import Car from './components/CSVDataVisualization/VisualizationCar';
 import Color from './components/CSVDataVisualization/VisualizationColor';
-import MigrantsD3 from './components/CSVDataVisualization/VisualizationScatterPlotD3';
+import MigrantsD3 from './components/CSVDataVisualization/VisualizationMigrantsMapD3';
 import MouseFollowingCircle from './components/MouseFollowing/MouseFollowingCircle';
 import PlotD3 from './components/CSVDataVisualization/VisualizationPlot';
 import Population from './components/CSVDataVisualization/VisualizationPopulation';
