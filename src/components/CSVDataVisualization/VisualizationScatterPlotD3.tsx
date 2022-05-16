@@ -73,7 +73,7 @@ const VisualizationScatterPlotD3 = ({
         .domain([0, max(binnedData, (d) => d.y) as any])
         .range([innerHeight, 0])
         .nice(),
-    []
+    [binnedData, innerHeight]
   );
 
   const brushRef = useRef();
