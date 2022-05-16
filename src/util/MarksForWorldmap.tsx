@@ -1,5 +1,7 @@
 import { geoGraticule, geoNaturalEarth1, geoPath } from 'd3';
 
+import { useMemo } from 'react';
+
 interface MarksForPlotProps {
   worldAtlas: any;
   data: any;
@@ -19,16 +21,22 @@ export const MarksForWorldmap = ({
 }: MarksForPlotProps) => {
   return (
     <g className="marks">
-      <path className="sphere" d={path({ type: 'Sphere' }) as any} />
-      <path className="graticules" d={path(graticule()) as any} />
-      {land.features.map((feature: any, index: number) => (
-        <path
-          key={`worldmap-${index}`}
-          className="land"
-          d={path(feature) as any}
-        />
-      ))}
-      <path className="interiors" d={path(interiors) as any} />
+      {useMemo(() => {
+        return (
+          <>
+            <path className="sphere" d={path({ type: 'Sphere' }) as any} />
+            <path className="graticules" d={path(graticule()) as any} />
+            {land.features.map((feature: any, index: number) => (
+              <path
+                key={`worldmap-${index}`}
+                className="land"
+                d={path(feature) as any}
+              />
+            ))}
+            <path className="interiors" d={path(interiors) as any} />
+          </>
+        );
+      }, [interiors, land.features])}
       {data.map((d: any, index: number) => {
         if (d['Location Coordinates']) {
           d.lng = d['Location Coordinates'][1];

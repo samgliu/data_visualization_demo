@@ -10,7 +10,7 @@ import {
   timeFormat,
   timeMonths,
 } from 'd3';
-import { useEffect, useRef } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 
 import { AxisBottom } from '../../util/AxisBottom';
 import { AxisLeftForPlot } from '../../util/AxisLeftForPlot';
@@ -28,6 +28,8 @@ interface VisualizationScatterPlotD3Props {
   xValue: any;
 }
 
+const xAxisTickFormat = timeFormat('%m/%d/%Y');
+
 const VisualizationScatterPlotD3 = ({
   data,
   width,
@@ -43,28 +45,36 @@ const VisualizationScatterPlotD3 = ({
   const yValue = (d: any) => d['Total Dead and Missing'];
   const yAxisLabel = 'Total Dead and Missing';
 
-  const xAxisTickFormat = timeFormat('%m/%d/%Y');
+  const xScale = useMemo(
+    () =>
+      scaleTime()
+        .domain(extent(data, xValue) as any)
+        .range([0, innerWidth])
+        .nice(),
+    [data, innerWidth, xValue]
+  );
 
-  const xScale = scaleTime()
-    .domain(extent(data, xValue) as any)
-    .range([0, innerWidth])
-    .nice();
+  const binnedData = useMemo(() => {
+    const [start, stop] = xScale.domain();
+    return bin()
+      .value(xValue)
+      .domain(xScale.domain() as any)
+      .thresholds(timeMonths(start, stop) as any)(data)
+      .map((array) => ({
+        y: sum(array, yValue),
+        x0: array.x0,
+        x1: array.x1,
+      }));
+  }, [data, xScale, xValue]);
 
-  const [start, stop] = xScale.domain();
-  const binnedData = bin()
-    .value(xValue)
-    .domain(xScale.domain() as any)
-    .thresholds(timeMonths(start, stop) as any)(data)
-    .map((array) => ({
-      y: sum(array, yValue),
-      x0: array.x0,
-      x1: array.x1,
-    }));
-
-  const yScale = scaleLinear()
-    .domain([0, max(binnedData, (d) => d.y) as any])
-    .range([innerHeight, 0])
-    .nice();
+  const yScale = useMemo(
+    () =>
+      scaleLinear()
+        .domain([0, max(binnedData, (d) => d.y) as any])
+        .range([innerHeight, 0])
+        .nice(),
+    []
+  );
 
   const brushRef = useRef();
 

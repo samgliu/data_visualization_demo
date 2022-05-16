@@ -28,7 +28,11 @@ const VisualizationMigrantsD3 = () => {
 
   return (
     <svg width={width} height={height}>
-      <VisualizationMigrantsMapD3 data={filteredData} worldAtlas={worldAtlas} />
+      <VisualizationMigrantsMapD3
+        data={data}
+        filteredData={filteredData}
+        worldAtlas={worldAtlas}
+      />
       <g transform={`translate(0, ${height - dateHistogramSize * height})`}>
         <VisualizationScatterPlotD3
           data={data}
