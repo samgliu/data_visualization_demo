@@ -29,7 +29,7 @@ export const MarksForWorldmap = ({
         />
       ))}
       <path className="interiors" d={path(interiors) as any} />
-      {data.map((d: any) => {
+      {data.map((d: any, index: number) => {
         if (d['Location Coordinates']) {
           d.lng = d['Location Coordinates'][1];
           d.lat = d['Location Coordinates'][0];
@@ -37,6 +37,7 @@ export const MarksForWorldmap = ({
         const [x, y] = projection([d.lng, d.lat]) as any;
         return (
           <circle
+            key={`circle-${index}`}
             className="city-circle"
             cx={x}
             cy={y}

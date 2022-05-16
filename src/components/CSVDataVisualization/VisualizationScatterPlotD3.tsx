@@ -1,13 +1,16 @@
 import {
   bin,
+  brushX,
   extent,
   max,
   scaleLinear,
   scaleTime,
+  select,
   sum,
   timeFormat,
   timeMonths,
 } from 'd3';
+import { useEffect, useRef } from 'react';
 
 import { AxisBottom } from '../../util/AxisBottom';
 import { AxisLeftForPlot } from '../../util/AxisLeftForPlot';
@@ -32,7 +35,6 @@ const VisualizationScatterPlotD3 = ({
   setBrushExtent,
   xValue,
 }: VisualizationScatterPlotD3Props) => {
-
   const innerHeight = height - margin.top - margin.bottom;
   const innerWidth = width - margin.left - margin.right;
 
@@ -63,6 +65,19 @@ const VisualizationScatterPlotD3 = ({
     .domain([0, max(binnedData, (d) => d.y) as any])
     .range([innerHeight, 0])
     .nice();
+
+  const brushRef = useRef();
+
+  useEffect(() => {
+    const brush = brushX().extent([
+      [0, 0],
+      [innerWidth, innerHeight],
+    ]);
+    brush(select(brushRef.current as any));
+    brush.on('brush end', (event) => {
+      setBrushExtent(event.selection && event.selection.map(xScale.invert));
+    });
+  }, [innerWidth, innerHeight, setBrushExtent, xScale.invert]);
 
   return (
     <svg width={width} height={height}>
@@ -102,6 +117,7 @@ const VisualizationScatterPlotD3 = ({
           tooltipFormat={(d: any) => d}
           innerHeight={innerHeight}
         />
+        <g ref={brushRef as any} />
       </g>
     </svg>
   );

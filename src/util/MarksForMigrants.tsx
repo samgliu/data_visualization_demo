@@ -13,8 +13,9 @@ export const MarksForMigrants = ({
   tooltipFormat,
   innerHeight,
 }: MarksProps) =>
-  binnedData.map((d: any) => (
+  binnedData.map((d: any, index: number) => (
     <rect
+      key={index}
       className="marks"
       x={xScale(d.x0)}
       y={yScale(d.y)}
