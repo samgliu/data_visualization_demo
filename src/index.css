@@ -51,6 +51,11 @@ pre {
   fill: #635f5d;
 }
 
+.axis-label-sm {
+  font-size: 0.60em;
+  fill: #635f5d;
+}
+
 label,
 select {
   font-size: 1.5em;

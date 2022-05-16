@@ -18,7 +18,7 @@ import { MarksForMigrants } from '../../util/MarksForMigrants';
 
 const margin = { top: 0, right: 30, bottom: 20, left: 45 };
 const xAxisLabelOffset = 54;
-const yAxisLabelOffset = 30;
+const yAxisLabelOffset = 38;
 
 interface VisualizationScatterPlotD3Props {
   data: any;
@@ -99,7 +99,7 @@ const VisualizationScatterPlotD3 = ({
           tickOffset={5}
         />
         <text
-          className="axis-label"
+          className="axis-label-sm"
           textAnchor="middle"
           transform={`translate(${-yAxisLabelOffset},${
             innerHeight / 2
@@ -113,7 +113,7 @@ const VisualizationScatterPlotD3 = ({
           tickOffset={5}
         />
         <text
-          className="axis-label"
+          className="axis-label-sm"
           x={innerWidth / 2}
           y={innerHeight + xAxisLabelOffset}
           textAnchor="middle"
