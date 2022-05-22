@@ -19,7 +19,9 @@ pre {
 .marks {
   fill: #5a9ee8;
 }
-
+.mark {
+  fill: #5a9ee8;
+}
 .marks .land {
   fill: #a7cdf5;
 }
@@ -52,7 +54,7 @@ pre {
 }
 
 .axis-label-sm {
-  font-size: 0.60em;
+  font-size: 0.6em;
   fill: #635f5d;
 }
 
@@ -66,5 +68,10 @@ select option {
 
 .city-circle {
   fill: #2457d9;
+  opacity: 0.3;
+}
+
+circle {
+  fill: #137b80;
   opacity: 0.3;
 }

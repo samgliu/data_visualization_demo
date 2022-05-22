@@ -9,6 +9,7 @@ import {
   useLocation,
 } from 'react-router-dom';
 
+import AIDS from './components/CSVDataVisualization/VisualizationAIDS';
 import Box from '@mui/material/Box';
 import Car from './components/CSVDataVisualization/VisualizationCar';
 import Color from './components/CSVDataVisualization/VisualizationColor';
@@ -62,6 +63,7 @@ function MyTab() {
   const routeMatch = useRouteMatch([
     '/mouse-following-circle',
     '/smiley-faces',
+    '/visualization-aids',
     '/visualization-car',
     '/visualization-color',
     '/visualization-migrants-d3',
@@ -82,11 +84,17 @@ function MyTab() {
         value="/smiley-faces"
         to="/smiley-faces"
         component={Link}
-      />
+      />.0
       <Tab
         label="Mouse Following Circle"
         value="/mouse-following-circle"
         to="/mouse-following-circle"
+        component={Link}
+      />
+      <Tab
+        label="Visualization AIDS"
+        value="/visualization-aids"
+        to="/visualization-aids"
         component={Link}
       />
       <Tab
@@ -158,6 +166,7 @@ export default function MyTabs() {
             path="/mouse-following-circle"
             element={<MouseFollowingCircle />}
           />
+          <Route path="/visualization-aids" element={<AIDS />} />
           <Route path="/visualization-car" element={<Car />} />
           <Route path="/visualization-color" element={<Color />} />
           <Route path="/visualization-migrants-d3" element={<MigrantsD3 />} />
